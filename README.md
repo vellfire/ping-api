@@ -22,7 +22,7 @@ Using `docker compose`:
 ```yml
 ---
 services:
-  webfinger:
+  uptime-api:
     image: ghcr.io/vellfire/ping-api:1.0.0
     restart: unless-stopped
     ports:

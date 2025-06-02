@@ -12,7 +12,7 @@ RUN pip install -r requirements.txt
 
 FROM docker.io/library/python:3.13.3-slim-bookworm AS runner
 
-RUN apt update && apt upgrade -y && apt install -y iputils-ping
+RUN apt update && apt upgrade -y && apt install -y iputils-ping && apt clean
 
 USER root
 

@@ -29,28 +29,16 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Login to GitHub Container Registry
-        uses: docker/metadata-action@v5
-        with:
-          registry: ghcr.io
-          username: ${{ github.repository_owner }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-
       - name: Gather Docker metadata
         uses: docker/metadata-action@v5
         id: meta
-        env:
-          DOCKER_METADATA_ANNOTATIONS_LEVELS: manifest,index
         with:
           images: |
             ghcr.io/${{ github.repository_owner }}/${{ env.IMAGE_NAME }}
-            ${{ github.repository_owner }}/${{ env.IMAGE_NAME }}
 
       - name: Build and push image
         uses: docker/build-push-action@v6
         with:
-          push: ${{ inputs.push != 'false' }}
+          push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
-          annotations: ${{ steps.meta.outputs.annotations }}
-          provenance: false

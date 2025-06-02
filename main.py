@@ -1,12 +1,13 @@
 from fastapi import FastAPI
 import subprocess
+from os import environ
 
 app = FastAPI()
 
-host = "172.16.110.2"
+endpoint = environ['ENDPOINT']
 
 @app.get("/status")
 def ping():
-    command = ['ping', '-c', '1', '-W', '1', host]
+    command = ['ping', '-c', '1', '-W', '1', endpoint]
     result = subprocess.run(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
     return{"online": result.returncode == 0}

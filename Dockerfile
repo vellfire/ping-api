@@ -1,4 +1,4 @@
-FROM docker.io/library/python:3.13.4-slim-bookworm AS compiler
+FROM docker.io/library/python:3.13.5-slim-bookworm AS compiler
 
 WORKDIR /app
 
@@ -10,7 +10,7 @@ COPY requirements.txt /app/requirements.txt
 RUN pip install -r requirements.txt
 
 
-FROM docker.io/library/python:3.13.4-slim-bookworm AS runner
+FROM docker.io/library/python:3.13.5-slim-bookworm AS runner
 
 RUN apt update && apt upgrade -y && apt install -y iputils-ping && apt clean
 

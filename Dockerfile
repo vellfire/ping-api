@@ -12,7 +12,7 @@ RUN pip install -r requirements.txt
 
 FROM docker.io/library/python:3.13.5-alpine AS runner
 
-RUN apt update && apt upgrade -y && apt install -y iputils-ping && apt clean
+RUN apk update && apk add --no-cache iputils-ping
 
 USER root
 

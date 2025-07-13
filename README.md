@@ -14,7 +14,7 @@ docker run -d \
     -e ENDPOINT=192.168.1.1
     -e PORT=8080 \
     -p 8080:8080 \
-    ghcr.io/vellfire/ping-api:1.0.0
+    ghcr.io/vellfire/ping-api:latest
 ```
 
 Using `docker compose`:
@@ -22,14 +22,14 @@ Using `docker compose`:
 ```yml
 ---
 services:
-  uptime-api:
-    image: ghcr.io/vellfire/ping-api:1.0.0
+  ping-api:
+    image: ghcr.io/vellfire/ping-api:latest
     restart: unless-stopped
     ports:
       - 8080:8080
     environment:
       PORT: 8080
-      ENDPOINT: "127.0.0.1"
+      ENDPOINT: "192.168.1.1"
 ```
 
 ### Environment Variables

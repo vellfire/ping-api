@@ -4,6 +4,8 @@ Small container to ping a single IP and return the result via API using subproce
 
 ## Usage
 
+Once running, the endpoint is accessible from `http://$ip:8080/status`
+
 Using `docker run`:
 
 ```sh

@@ -7,7 +7,7 @@ USER root
 RUN python -m venv /app/.venv
 ENV PATH="/app/.venv/bin:$PATH"
 COPY requirements.txt /app/requirements.txt
-RUN pip install -r requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
 
 
 FROM docker.io/library/python:3.13.5-alpine AS runner

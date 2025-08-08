@@ -1,4 +1,4 @@
-FROM docker.io/library/python:3.13.5-alpine AS compiler
+FROM docker.io/library/python:3.13.6-alpine AS compiler
 
 WORKDIR /app
 
@@ -10,7 +10,7 @@ COPY requirements.txt /app/requirements.txt
 RUN pip install -r requirements.txt
 
 
-FROM docker.io/library/python:3.13.5-alpine AS runner
+FROM docker.io/library/python:3.13.6-alpine AS runner
 
 RUN apk update && apk add --no-cache iputils-ping
 
